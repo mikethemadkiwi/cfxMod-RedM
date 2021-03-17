@@ -24,7 +24,7 @@ class cfxMod {
         return new Promise((resolve, reject)=>{
             if(cfxModData.settings.log){
                 let dt = new Date(Date.now());
-                if(cfxModData.settings.debug){
+                if(cfxModData.debug){
                     console.log(type, msg)
                 }
                 cfxModLogs.data.push(`${dt} [${type}]: ${msg}`)
@@ -48,30 +48,30 @@ class cfxMod {
 on('onResourceStart', async (rName)=>{
     if (resourceName != rName) { return; }
     else {
-        cfxMod.Log('onResourceStart',`|| Script  ${resourceName} Started ||`)
+        let log = new cfxMod.Log('onResourceStart',`|| Script  ${resourceName} Started ||`)
     }
 });
 on('onResourceStop', async (rName)=>{
     if (resourceName != rName) { return; }
     else { 
-        cfxMod.Log('onResourceStop',`|| Script  ${resourceName} Stopped ||`)
+        let log = new cfxMod.Log('onResourceStop',`|| Script  ${resourceName} Stopped ||`)
     }
 });
 on('playerConnecting', async(name, setKickReason, deferrals)=>{
-    cfxMod.Log('playerConnecting', `[${global.source}] ${GetPlayerName(player)}`)
+    let log = new cfxMod.Log('playerConnecting', `[${global.source}] ${GetPlayerName(player)}`)
     let Identifiers = new GetPlayerIds(global.source);
 })
 on('playerDropped', async (reason)=>{
-    cfxMod.Log('playerDropped', `[${global.source}] ${GetPlayerName(player)}`)
+    let log = new cfxMod.Log('playerDropped', `[${global.source}] ${GetPlayerName(player)}`)
     let Identifiers = new GetPlayerIds(global.source);
     let removeIndex = ConnectionIdentifiers.map(function(id) { return id.license; }).indexOf(Identifiers.license); 
     ConnectionIdentifiers.splice(removeIndex, 1);
 });
 onNet("cfxGameState:MAPSTART", async ()=>{
-    cfxMod.Log('MAPSTART', `[${global.source}] ${GetPlayerName(player)}`)
+    let log = new cfxMod.Log('MAPSTART', `[${global.source}] ${GetPlayerName(player)}`)
 })
 onNet("cfxGameState:PSPAWN", async ()=>{
-    cfxMod.Log('PSPAWN', `[${global.source}] ${GetPlayerName(player)}`)
+    let log = new cfxMod.Log('PSPAWN', `[${global.source}] ${GetPlayerName(player)}`)
 })
 onNet("cfxGameState:NISS", async ()=>{
     cfxMod.Log('NISS', `[${global.source}] ${GetPlayerName(player)}`)
