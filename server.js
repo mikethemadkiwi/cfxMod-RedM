@@ -32,6 +32,18 @@ class cfxMod {
             resolve(true)
         })
     }
+    findUser(Identifiers){
+        return new Promise((resolve, reject)=>{
+            
+            resolve(true)
+        })
+    }
+    saveUser(Identifiers){
+        return new Promise((resolve, reject)=>{
+            
+            resolve(true)
+        })
+    }
 }
 on('onResourceStart', async (rName)=>{
     if (resourceName != rName) { return; }
